@@ -1,1 +1,33 @@
 
+/* src/styles/hud.css */
+.hud-core {
+  background: radial-gradient(ellipse at top, oklch(0.22 0.12 295 / 0.35), transparent 60%),
+              radial-gradient(ellipse at bottom right, oklch(0.32 0.18 220 / 0.25), transparent 55%);
+}
+
+.hud-frame {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.hud-corners {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 20 L20 20 L20 0' fill='none' stroke='white' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E");
+}
+
+.hud-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.hud-scanlines {
+  background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(255,255,255,0.02) 3px);
+}
+
+.hud-noise {
+  background-image: url('/noise.png');
+  background-size: 256px 256px;
+  opacity: 0.08;
+  mix-blend-mode: overlay;
+}
