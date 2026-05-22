@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { RainBackground } from "@/components/RainBackground";
-import { TopNav } from "@/components/TopNav";
+import { HUDCore } from "./hud/HUDCore";
+import { TopNav } from "./TopNav";
 
 interface Props {
   tag: string;
@@ -12,14 +12,9 @@ interface Props {
 
 export function PageShell({ tag, title, subtitle, children }: Props) {
   return (
-    <div className="relative h-screen w-screen overflow-hidden bg-background text-foreground">
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,oklch(0.22_0.12_295_/_0.35),transparent_60%),radial-gradient(ellipse_at_bottom_right,oklch(0.32_0.18_220_/_0.25),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-0 z-[2] hud-grid opacity-20" />
-      <RainBackground />
-      <div className="pointer-events-none absolute inset-0 z-[3] scanline" />
-
+    <HUDCore>
       <TopNav />
-
+      
       <main className="relative z-20 flex h-full w-full flex-col items-center justify-center px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -64,6 +59,6 @@ export function PageShell({ tag, title, subtitle, children }: Props) {
           </motion.div>
         )}
       </main>
-    </div>
+    </HUDCore>
   );
 }
