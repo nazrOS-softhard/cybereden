@@ -1,15 +1,39 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, cloudflare (build-only),
-//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
-//     error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... } }) if needed.
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from "vite";
+import { resolve } from "node:path";
+import react from "@vitejs/plugin-react";
+import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import tsconfigPaths from "vite-tsconfig-paths";
+import tailwindcss from "@tailwindcss/vite";
 
-// Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-// @cloudflare/vite-plugin builds from this — wrangler.jsonc main alone is insufficient.
+// Plain SPA build (Cloudflare Workers static-asset hosting):
+//  - File-based routes via @tanstack/router-plugin → generates src/routeTree.gen.ts
+//  - Path alias "@/" resolved via tsconfig (vite-tsconfig-paths) + explicit fallback
+//  - No TanStack Start / SSR — entry is index.html → src/main.tsx
 export default defineConfig({
-  tanstackStart: {
-    server: { entry: "server" },
+  plugins: [
+    tanstackRouter({
+      target: "react",
+      autoCodeSplitting: true,
+      routesDirectory: "src/routes",
+      generatedRouteTree: "src/routeTree.gen.ts",
+    }),
+    react(),
+    tsconfigPaths(),
+    tailwindcss(),
+  ],
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "./src"),
+    },
+  },
+  build: {
+    outDir: "dist",
+    sourcemap: false,
+    target: "es2022",
+  },
+  server: {
+    host: "0.0.0.0",
+    port: 5173,
+    strictPort: false,
   },
 });

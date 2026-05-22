@@ -9,42 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StreamsRouteImport } from './routes/streams'
-import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as JournalRouteImport } from './routes/journal'
-import { Route as EventsRouteImport } from './routes/events'
-import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StreamsIndexRouteImport } from './routes/streams/index'
+import { Route as ProfileIndexRouteImport } from './routes/profile/index'
+import { Route as MarketIndexRouteImport } from './routes/market/index'
+import { Route as JournalIndexRouteImport } from './routes/journal/index'
+import { Route as EventsIndexRouteImport } from './routes/events/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as SystemsXdrRouteImport } from './routes/systems/xdr'
+import { Route as SystemsGrowthnRouteImport } from './routes/systems/growthn'
 
-const StreamsRoute = StreamsRouteImport.update({
-  id: '/streams',
-  path: '/streams',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JournalRoute = JournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EventsRoute = EventsRouteImport.update({
-  id: '/events',
-  path: '/events',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -52,117 +30,143 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StreamsIndexRoute = StreamsIndexRouteImport.update({
+  id: '/streams/',
+  path: '/streams/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileIndexRoute = ProfileIndexRouteImport.update({
+  id: '/profile/',
+  path: '/profile/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketIndexRoute = MarketIndexRouteImport.update({
+  id: '/market/',
+  path: '/market/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalIndexRoute = JournalIndexRouteImport.update({
+  id: '/journal/',
+  path: '/journal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsIndexRoute = EventsIndexRouteImport.update({
+  id: '/events/',
+  path: '/events/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SystemsXdrRoute = SystemsXdrRouteImport.update({
+  id: '/systems/xdr',
+  path: '/systems/xdr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SystemsGrowthnRoute = SystemsGrowthnRouteImport.update({
+  id: '/systems/growthn',
+  path: '/systems/growthn',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
-  '/events': typeof EventsRoute
-  '/journal': typeof JournalRoute
   '/login': typeof LoginRoute
-  '/profile': typeof ProfileRoute
-  '/streams': typeof StreamsRoute
+  '/systems/growthn': typeof SystemsGrowthnRoute
+  '/systems/xdr': typeof SystemsXdrRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/events/': typeof EventsIndexRoute
+  '/journal/': typeof JournalIndexRoute
+  '/market/': typeof MarketIndexRoute
+  '/profile/': typeof ProfileIndexRoute
+  '/streams/': typeof StreamsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
-  '/events': typeof EventsRoute
-  '/journal': typeof JournalRoute
   '/login': typeof LoginRoute
-  '/profile': typeof ProfileRoute
-  '/streams': typeof StreamsRoute
+  '/systems/growthn': typeof SystemsGrowthnRoute
+  '/systems/xdr': typeof SystemsXdrRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/events': typeof EventsIndexRoute
+  '/journal': typeof JournalIndexRoute
+  '/market': typeof MarketIndexRoute
+  '/profile': typeof ProfileIndexRoute
+  '/streams': typeof StreamsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/dashboard': typeof DashboardRoute
-  '/events': typeof EventsRoute
-  '/journal': typeof JournalRoute
   '/login': typeof LoginRoute
-  '/profile': typeof ProfileRoute
-  '/streams': typeof StreamsRoute
+  '/systems/growthn': typeof SystemsGrowthnRoute
+  '/systems/xdr': typeof SystemsXdrRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/events/': typeof EventsIndexRoute
+  '/journal/': typeof JournalIndexRoute
+  '/market/': typeof MarketIndexRoute
+  '/profile/': typeof ProfileIndexRoute
+  '/streams/': typeof StreamsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/dashboard'
-    | '/events'
-    | '/journal'
     | '/login'
-    | '/profile'
-    | '/streams'
+    | '/systems/growthn'
+    | '/systems/xdr'
+    | '/dashboard/'
+    | '/events/'
+    | '/journal/'
+    | '/market/'
+    | '/profile/'
+    | '/streams/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/login'
+    | '/systems/growthn'
+    | '/systems/xdr'
     | '/dashboard'
     | '/events'
     | '/journal'
-    | '/login'
+    | '/market'
     | '/profile'
     | '/streams'
   id:
     | '__root__'
     | '/'
-    | '/dashboard'
-    | '/events'
-    | '/journal'
     | '/login'
-    | '/profile'
-    | '/streams'
+    | '/systems/growthn'
+    | '/systems/xdr'
+    | '/dashboard/'
+    | '/events/'
+    | '/journal/'
+    | '/market/'
+    | '/profile/'
+    | '/streams/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DashboardRoute: typeof DashboardRoute
-  EventsRoute: typeof EventsRoute
-  JournalRoute: typeof JournalRoute
   LoginRoute: typeof LoginRoute
-  ProfileRoute: typeof ProfileRoute
-  StreamsRoute: typeof StreamsRoute
+  SystemsGrowthnRoute: typeof SystemsGrowthnRoute
+  SystemsXdrRoute: typeof SystemsXdrRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  EventsIndexRoute: typeof EventsIndexRoute
+  JournalIndexRoute: typeof JournalIndexRoute
+  MarketIndexRoute: typeof MarketIndexRoute
+  ProfileIndexRoute: typeof ProfileIndexRoute
+  StreamsIndexRoute: typeof StreamsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/streams': {
-      id: '/streams'
-      path: '/streams'
-      fullPath: '/streams'
-      preLoaderRoute: typeof StreamsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/journal': {
-      id: '/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof JournalRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/events': {
-      id: '/events'
-      path: '/events'
-      fullPath: '/events'
-      preLoaderRoute: typeof EventsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -172,17 +176,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/streams/': {
+      id: '/streams/'
+      path: '/streams'
+      fullPath: '/streams/'
+      preLoaderRoute: typeof StreamsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/': {
+      id: '/profile/'
+      path: '/profile'
+      fullPath: '/profile/'
+      preLoaderRoute: typeof ProfileIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/market/': {
+      id: '/market/'
+      path: '/market'
+      fullPath: '/market/'
+      preLoaderRoute: typeof MarketIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal/': {
+      id: '/journal/'
+      path: '/journal'
+      fullPath: '/journal/'
+      preLoaderRoute: typeof JournalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/': {
+      id: '/events/'
+      path: '/events'
+      fullPath: '/events/'
+      preLoaderRoute: typeof EventsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/systems/xdr': {
+      id: '/systems/xdr'
+      path: '/systems/xdr'
+      fullPath: '/systems/xdr'
+      preLoaderRoute: typeof SystemsXdrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/systems/growthn': {
+      id: '/systems/growthn'
+      path: '/systems/growthn'
+      fullPath: '/systems/growthn'
+      preLoaderRoute: typeof SystemsGrowthnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DashboardRoute: DashboardRoute,
-  EventsRoute: EventsRoute,
-  JournalRoute: JournalRoute,
   LoginRoute: LoginRoute,
-  ProfileRoute: ProfileRoute,
-  StreamsRoute: StreamsRoute,
+  SystemsGrowthnRoute: SystemsGrowthnRoute,
+  SystemsXdrRoute: SystemsXdrRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  EventsIndexRoute: EventsIndexRoute,
+  JournalIndexRoute: JournalIndexRoute,
+  MarketIndexRoute: MarketIndexRoute,
+  ProfileIndexRoute: ProfileIndexRoute,
+  StreamsIndexRoute: StreamsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

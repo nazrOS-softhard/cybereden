@@ -12,7 +12,7 @@ const articles = [
   { id: 5, title: "Статья 5", category: "Цифровая культура", description: "Краткое описание статьи..." },
 ];
 
-export const Route = createFileRoute("/journal")({
+export const Route = createFileRoute("/journal/")({
   component: () => {
     const [filterCategory, setFilterCategory] = useState("Все");
 
