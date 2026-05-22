@@ -1,30 +1,15 @@
+// Cloudflare Worker — serves the built SPA from the static-assets binding.
+// Wrangler's `assets.not_found_handling = "single-page-application"` already
+// handles client-side routing fallback, but we keep an explicit worker to
+// allow future API routes or edge logic. For now it just delegates everything
+// to ASSETS.
 
-const indexHTML = `<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CyberEden</title>
-  </head>
-  <body>
-    <div id="root"></div>
-
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>`
+export interface Env {
+  ASSETS: Fetcher;
+}
 
 export default {
-  async fetch(request: Request) {
-    const url = new URL(request.url)
-
-    // всегда отдаём SPA entry
-    if (url.pathname === "/" || !url.pathname.includes(".")) {
-      return new Response(indexHTML, {
-        headers: { "content-type": "text/html" },
-      })
-    }
-
-    // fallback для всего остального (ассеты)
-    return new Response("not found", { status: 404 })
+  async fetch(request: Request, env: Env): Promise<Response> {
+    return env.ASSETS.fetch(request);
   },
-}
+};

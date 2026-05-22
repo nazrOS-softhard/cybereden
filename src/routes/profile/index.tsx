@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { PageShell } from "@/components/PageShell";
 
-export const Route = createFileRoute("/profile")({
+export const Route = createFileRoute("/profile/")({
   component: () => {
     const [activeTab, setActiveTab] = useState("КИБЛА");
 

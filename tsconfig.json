@@ -12,6 +12,10 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": false,
     "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
 
     /* Linting */
     "skipLibCheck": true,
@@ -20,6 +24,9 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+
+    /* Path aliases */
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }

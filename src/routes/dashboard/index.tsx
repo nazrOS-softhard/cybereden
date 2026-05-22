@@ -15,7 +15,7 @@ const cybers = [
   { id: 8, name: "CyberUser_08", role: "Главный разработчик", xp: 10320, status: "online" },
 ];
 
-export const Route = createFileRoute("/dashboard")({
+export const Route = createFileRoute("/dashboard/")({
   component: () => {
     const [selectedRole, setSelectedRole] = useState("Все");
 

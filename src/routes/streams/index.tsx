@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/PageShell";
 
-export const Route = createFileRoute("/streams")({
+export const Route = createFileRoute("/streams/")({
   component: () => (
     <PageShell
       tag="ПРЯМЫЕ ТРАНСЛЯЦИИ"

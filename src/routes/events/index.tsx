@@ -79,7 +79,7 @@ const events = [
   },
 ];
 
-export const Route = createFileRoute("/events")({
+export const Route = createFileRoute("/events/")({
   component: () => {
     const [filterTopic, setFilterTopic] = useState("Все");
 

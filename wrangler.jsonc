@@ -1,6 +1,23 @@
-name = "cybereden"
-main = "src/worker.ts"
-compatibility_date = "2026-01-01"
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cybereden",
+  "main": "src/worker.ts",
+  "compatibility_date": "2025-02-01",
+  "compatibility_flags": ["nodejs_compat"],
 
-[build]
-command = "npm run build"
+  // Static SPA assets — built output of `vite build`.
+  // `single-page-application` fallback lets TanStack Router handle deep links.
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  },
+
+  "build": {
+    "command": "npm run build"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

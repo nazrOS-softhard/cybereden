@@ -76,7 +76,7 @@ const products = [
   },
 ];
 
-export const Route = createFileRoute("/market")({
+export const Route = createFileRoute("/market/")({
   component: () => {
     const [selectedCategory, setSelectedCategory] = useState("ВСЕ ИНВЕНТАРЬ");
     const [selectedProduct, setSelectedProduct] = useState(null);
